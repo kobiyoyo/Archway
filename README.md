@@ -1,6 +1,6 @@
 # FACEBOOK CLONE
 
-The objective is to build a facebook clone with core features of the platform – users, profiles, “friendship”, posts, news feed, and “liking”. Sign-in with the real Facebook by using Omniauth and Devise is also implemented.
+The objective is to build a facebook clone with core features of the platform – users, profiles, “friendship”, posts, news feed, comments and “liking”. Sign-in with the real Facebook by using Omniauth and Devise is also implemented.
 
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
