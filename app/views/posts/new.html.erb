@@ -1,0 +1,11 @@
+
+<h1>What's on your mind</h1>
+
+<%=form_for(@post, :html => {role: "form"}) do |f| %>
+<p>
+<%= f.text_area :content %>
+</p>
+<p>
+<%= f.submit %>
+</p>
+<% end %>
