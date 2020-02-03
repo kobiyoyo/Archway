@@ -4,10 +4,14 @@ Rails.application.routes.draw do
         devise_for :users,
         path: '',
         path_names: {sign_in: 'login', sign_out: 'logout', edit:'profile',
-        sign_up: 'registration'},
+        sign_up: 'signup'},
         controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-
-        resources :users, only: [:show]
+        devise_scope :user do
+		   get "signup", to: "devise/registrations#new"
+		   get "login", to: "devise/sessions#new"
+		   get "logout", to: "devise/sessions#destroy"
+		end
+        resources :users, only: [:show,:index]
         resources :posts
         
 

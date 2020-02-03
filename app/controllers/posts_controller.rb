@@ -2,7 +2,6 @@ class PostsController < ApplicationController
     before_action :set_post, only: [:edit, :update, :show, :destroy]
     def index
         @posts = Post.all.order("created_at DESC")
-        @post = Post.new
     end
 
     def new 
@@ -10,12 +9,11 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(post_params)
-        @post.user = current_user
+        @post = current_user.posts.new(post_params)
         if @post.save 
             redirect_to(root_path, :notice => 'Post was successfully created.')
         else
-            render 'new'
+            render :new
         end
     end
 
@@ -24,10 +22,10 @@ class PostsController < ApplicationController
 
     def update
         if @post.update(post_params) 
-          flash[:success] = "Article is successfully updated"
+          flash[:success] = "Post is successfully updated"
           redirect_to root_path
         else
-          render 'edit'
+          render :edit
         end
     end
 
