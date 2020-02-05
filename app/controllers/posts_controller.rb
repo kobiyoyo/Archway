@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :show, :destroy]
+  before_action :set_post, only: %i[edit update show destroy]
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order('created_at DESC')
   end
 
   def new
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to(root_path, :notice => 'Post was successfully created')
+      redirect_to(root_path, notice: 'Post was successfully created')
     else
       flash.now[:alert] = "can't be blank"
       render :new
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = "Post is successfully updated"
+      flash[:success] = 'Post is successfully updated'
       redirect_to root_path
     else
       render :edit
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:danger] = "Post was successfully deleted"
+    flash[:danger] = 'Post was successfully deleted'
     redirect_to posts_path
   end
 
@@ -48,4 +48,5 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
 end
