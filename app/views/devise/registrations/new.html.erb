@@ -4,8 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
@@ -14,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.date_field :dob %>
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_field :date_of_birth %>
   </div>
 
   <div class="field">

@@ -6,7 +6,7 @@
 <tbody>
 <% current_user.posts.each do |post|%>
  <tr>
-  <td>author: <%= post.user.name %> Post: <%= post.content%></td>
+  <td>author: <%= post.user.first_name %> Post: <%= post.content%></td>
   <td><%= link_to 'Show', post%></td>
   <td><%= link_to 'Edit', edit_post_path(post)%></td>
   <td><%= link_to "Delete", post_path(post), method: :delete, 
@@ -17,4 +17,4 @@
 </tbody>
 </table>
 <br>
-<%= link_to 'New post', new_post_path %>
+<%= link_to 'New Post', new_post_path %>
