@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'create post' do
-
   let(:user) { FactoryBot.create(:user) }
 
   scenario 'successfully' do

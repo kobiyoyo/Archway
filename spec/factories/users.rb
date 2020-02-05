@@ -1,7 +1,6 @@
 require 'faker'
 
 FactoryBot.define do
-
   factory :user do
     first_name { 'chubi' }
     last_name { 'adama' }
@@ -21,5 +20,4 @@ FactoryBot.define do
     password { 'scerette' }
     password_confirmation { 'scerette' }
   end
-
 end

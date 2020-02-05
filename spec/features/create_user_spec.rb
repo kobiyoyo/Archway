@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'create user' do
-
   let(:user) { FactoryBot.create(:user_two, email: 'joeboy@gmail.com') }
 
   scenario 'successfully' do

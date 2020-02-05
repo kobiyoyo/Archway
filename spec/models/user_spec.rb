@@ -13,15 +13,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'requires password_confirmation' do
-      user = User.new(email: 'yabmas@gmail.com', password: 'chubiyojo', password_confirmation:'')
+      user = User.new(email: 'yabmas@gmail.com', password: 'chubiyojo', password_confirmation: '')
       expect(user.valid?).to be_falsy
     end
 
     it { should have_many(:posts) }
   end
 end
-
-
-
-
-
