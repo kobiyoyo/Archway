@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'create post' do
 
-  let(:user) { FactoryBot.create(:user)}
+  let(:user) { FactoryBot.create(:user) }
 
   scenario 'successfully' do
     visit user_session_path
@@ -26,5 +26,4 @@ feature 'create post' do
     click_on('Create Post')
     expect(page).to have_content("can't be blank")
   end
-
 end

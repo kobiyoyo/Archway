@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'create user' do
 
-  let(:user) { FactoryBot.create(:user_two,email: 'joeboy@gmail.com')}
+  let(:user) { FactoryBot.create(:user_two, email: 'joeboy@gmail.com') }
 
   scenario 'successfully' do
     visit signup_path
@@ -23,5 +23,4 @@ feature 'create user' do
     expect(page).to have_content("Email can't be blank")
     expect(page).to have_content("Password can't be blank")
   end
-
 end
