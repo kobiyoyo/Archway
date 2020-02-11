@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 		   get "logout", to: "devise/sessions#destroy"
 		end
         resources :users, only: [:show,:index]
-        resources :posts
+        resources :posts do 
+            resources :comments
+        end
         
 
 end
