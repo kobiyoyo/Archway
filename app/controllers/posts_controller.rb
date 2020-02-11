@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to(root_path, notice: 'Post was successfully created')
+      redirect_to(@post, notice: 'Post was successfully created')
     else
       flash.now[:alert] = "can't be blank"
       render :new
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:success] = 'Post is successfully updated'
-      redirect_to root_path
+      redirect_to @post
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:danger] = 'Post was successfully deleted'
-    redirect_to posts_path
+    redirect_to post_path
   end
 
   private
