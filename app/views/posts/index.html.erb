@@ -12,8 +12,8 @@
   <td><%= link_to "Delete", post_path(post), method: :delete, 
         data: { confirm: "Are you sure you want to delete this post"} %></td>
  <td><% post.comments.each do |comment| %>
- 	<p>	<%= comment.user.first_name %> </p>
- 	<p>	<%= comment.content %> </p>
+ 	   <p>	<%= comment.user.first_name %> </p>
+ 	   <p>	<%= comment.content %> </p>
  	<% end %>
  </td>
   <td>
@@ -24,6 +24,7 @@
   	<% end %>
  </td>
  </tr>
+  <p><%= post.likes.count %> <%= ( post.likes.count ) == 1 ? 'Like' : 'Likes'%></p>
  <% end %>
 </tbody>
 </table>

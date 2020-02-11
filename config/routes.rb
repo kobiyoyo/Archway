@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :users, only: [:show,:index]
         resources :posts do 
             resources :comments
+            resources :likes
         end
         
 

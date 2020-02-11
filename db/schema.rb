@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_115244) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
+    t.string "string"
     t.string "gender"
     t.string "first_name"
     t.string "last_name"
