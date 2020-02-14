@@ -14,8 +14,8 @@ feature 'create post' do
     click_on('Create Post')
     expect(page).to have_content('Post was successfully created')
     expect(Post.last.content).to eq('read a file please')
-    fill_in('Content',with: 'hello girl')
-    click_on ('Create Comment')
+    fill_in('Content', with: 'hello girl')
+    click_on('Create Comment')
     expect(page).to have_content('hello girl')
   end
 end

@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     if already_liked?
-      flash[:notice] = "Already liked"
+      flash[:notice] = 'Already liked'
     else
       @post.likes.create(user_id: current_user.id)
     end
@@ -13,13 +13,12 @@ class LikesController < ApplicationController
 
   def destroy
     if !(already_liked?)
-      flash[:notice] = "Cannot unlike"
+      flash[:notice] = 'Cannot unlike'
     else
       @like.destroy
     end
     redirect_to post_path(@post)
   end
-
 
   private
 
@@ -35,5 +34,4 @@ class LikesController < ApplicationController
   def find_like
     @like = @post.likes.find(params[:id])
   end
-
 end
