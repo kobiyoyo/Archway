@@ -1,12 +1,11 @@
 <h1>Showing selected article</h1>
 <p>
   <%= @post.content %>
-  <%= button_to 'Like', post_likes_path(@post), method: :post %>
 </p>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+<% like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if like %>
+  <%= button_to 'Unlike', post_like_path(@post,like), method: :delete %>
 <% else %>
   <%= button_to 'Like', post_likes_path(@post), method: :post %>
-<% end %>
+<% end %> 
