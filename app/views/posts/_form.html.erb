@@ -1,8 +1,10 @@
 
     <%= form_for( @post, :html => { role: "form"}) do |f| %>
-          <%= f.label :content%>
-          <%= f.text_area :content, placeholder: "What is on your mind" %>
-          <%= f.submit class: 'btn btn-primary btn-lg' %>    
+          <%= f.label :content%><div>
+      <%= f.text_area :content, placeholder: "What is on your mind" %></div>
+      <div>
+          <%= f.submit class: 'btn btn-primary btn-lg' %>
+      </div>
     <% end %>
-      [ <%= link_to "Return to home page", posts_path %> ]
+
  
