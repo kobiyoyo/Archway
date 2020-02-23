@@ -1,0 +1,5 @@
+  	<%= form_with(model: [post, post.comments.build],local: true ) do |form| %>
+  		<%= form.label :content %><br>
+  		<%= form.text_area :content %>
+  		<%= form.submit %>
+  	<% end %>
