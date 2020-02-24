@@ -1,0 +1,5 @@
+     <%= form_for [post, @comment] do |form| %>
+  		<%= form.label :content %><br>
+  		<%= form.text_area :content %>
+  		<%= form.submit %>
+  	<% end %>
