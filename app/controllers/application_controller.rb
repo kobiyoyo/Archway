@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def instantiate_comment
     @comment = Comment.new
   end
-  
+
   protected
 
   def configure_permitted_parameters
