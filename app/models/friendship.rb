@@ -11,7 +11,7 @@ class Friendship < ApplicationRecord
   end
 
   def self.request(user, friend)
-    if user != friend
+    unless user == friend
       transaction do
         create(user: user, friend: friend, status: 'pending')
         create(user: friend, friend: user, status: 'requested')
@@ -25,8 +25,6 @@ class Friendship < ApplicationRecord
       find_by_user_id_and_friend_id(friend, user).destroy
     end
   end
-
-  private
 
   def self.accept_one_side(user, friend, updated_at)
     request = find_by_user_id_and_friend_id(user, friend)
