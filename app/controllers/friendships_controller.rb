@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
-  before_action :find_user, only: [:create, :accept, :deny, :destroy]
-  
+  before_action :find_user, only: %i[create accept deny destroy]
+
   def index
     @user = current_user
     @friends = @user.friends
@@ -32,7 +32,8 @@ class FriendshipsController < ApplicationController
     redirect_to friends_path
   end
 
-private
+  private
+
   def find_user
     @user_one = current_user
     @friend = User.find(params[:id])
