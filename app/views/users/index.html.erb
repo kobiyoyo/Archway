@@ -2,8 +2,14 @@
 <h1><%= user.email %></h1>
 <h1><%= user.gender %></h1>
 <h1><%= user.date_of_birth %></h1>
-<p> <%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %></p>
+<%= link_to "Send Friend Request", add_friend_path(user), method: :post %>
+<% current_user.friends.each do |user_one| %>
+<% if user_one != user && current_user != user %> 
+ <p> <%= link_to "Send Friend Request", add_friend_path(user_one), method: :post %></p>
+<% end %> 
+<% end %> 
+
 <% if current_user == user %> 
-<%= link_to 'Edit Profile', edit_user_registration_path %>
+ <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %> 
 <% end %> 

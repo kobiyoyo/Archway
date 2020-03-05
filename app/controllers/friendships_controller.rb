@@ -1,21 +1,40 @@
 class FriendshipsController < ApplicationController
+  before_action :find_user, only: [:create, :accept, :deny, :destroy]
+  
+  def index
+    @user = current_user
+    @friends = @user.friends
+    @pending_friends = @user.pending_friends
+    @requested_friends = @user.requested_friends
+  end
+
   def create
-    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
-    if @friendship.save
-      flash[:notice] = 'Added friend.'
-    else
-      flash[:notice] = 'Unable to add friend'
-    end
-    redirect_to root_url
+    Friendship.request(@user_one, @friend)
+    flash[:success] = "Friend request has been sent to #{@friend.first_name} #{@friend.last_name}."
+    redirect_to user_path(@friend)
+  end
+
+  def accept
+    Friendship.accept(@user_one, @friend)
+    flash[:success] = "Friend request from #{@friend.email} has been accepted."
+    redirect_to friends_path
+  end
+
+  def deny
+    Friendship.breakup(@user_one, @friend)
+    flash[:danger] = "Friend request from #{@friend.email} has been declined."
+    redirect_to friends_path
   end
 
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
-    @friendship.destroy
-    flash[:notice] = 'Removed friendship.'
-    redirect_to current_user
+    Friendship.breakup(@user_one, @friend)
+    flash[:danger] = "#{@friend.email} has been removed from your friends list."
+    redirect_to friends_path
   end
 
-  def index
+private
+  def find_user
+    @user_one = current_user
+    @friend = User.find(params[:id])
   end
 end

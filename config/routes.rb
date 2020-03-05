@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'friendships/create'
-  get 'friendships/destroy'
-  get 'friendships/index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "posts#index"
   devise_for :users,
@@ -14,11 +12,18 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
   end
-  resources :users, only: [:show,:index]
+  resources :users do
+    member do
+      get :friends 
+    end
+  end
   resources :posts do
     resources :comments
     resources :likes
   end
-  resources :friendships
-
+  get 'friends', to: 'friendships#index', as: 'friends'
+  get 'friends/create/:id', to: 'friendships#create', as: 'add_friend'
+  get 'friends/accept/:id', to: 'friendships#accept', as: 'accept_request'
+  delete 'friends/deny/:id', to: 'friendships#deny', as: 'deny_request'
+  delete 'friends/delete/:id', to: 'friendships#destroy', as: 'delete_friend'
 end
