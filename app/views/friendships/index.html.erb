@@ -4,7 +4,7 @@
  <div>	<%= friend.email %></div>
  <%= link_to 'View Profile', user_path(friend), class:'btn btn-info' %>
 
- <%= form_tag  deny_request_path(friend.id) ,method: "delete" do %>
+ <%= form_tag  deny_request_path(friend.id) ,method: 'delete' do %>
  <%= submit_tag "delete #{friend.first_name}" %>
  <% end %>
 
@@ -15,8 +15,8 @@
 <% @requested_friends.each do |requested_friend| %>
  <div>	<%= requested_friend.email %> </div>
  <%= link_to 'View Profile', user_path(requested_friend), class:'btn btn-info' %>
- <%= link_to "Accept", accept_request_path(requested_friend), method: :put, class:"btn btn-success" %>
- <%= link_to "Decline", deny_request_path(requested_friend), method: :put, class:"btn btn-danger" %>
+ <%= link_to 'Accept', accept_request_path(requested_friend), method: :put, class:'btn btn-success' %>
+ <%= link_to 'Decline', deny_request_path(requested_friend), method: :put, class:'btn btn-danger' %>
 <% end %>
 <% else %>
 <div>

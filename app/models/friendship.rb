@@ -11,7 +11,7 @@ class Friendship < ApplicationRecord
   end
 
   def self.request(user, friend)
-    unless user == friend
+    if user != friend
       transaction do
         create(user: user, friend: friend, status: 'pending')
         create(user: friend, friend: user, status: 'requested')
