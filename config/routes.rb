@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "posts#index"
+  resources :users
   devise_for :users,
              path: '',
              path_names: {sign_in: 'login', sign_out: 'logout', edit:'profile',
@@ -12,11 +13,7 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
   end
-  resources :users do
-    member do
-      get :friends 
-    end
-  end
+
   resources :posts do
     resources :comments
     resources :likes
@@ -26,4 +23,5 @@ Rails.application.routes.draw do
   get 'friends/accept/:id', to: 'friendships#accept', as: 'accept_request'
   delete 'friends/deny/:id', to: 'friendships#deny', as: 'deny_request'
   delete 'friends/delete/:id', to: 'friendships#destroy', as: 'delete_friend'
+  get 'users/profile/:id', to: 'users#users_profile', as: 'user_profile'
 end

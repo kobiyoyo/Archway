@@ -26,4 +26,8 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  def user_friends_post
+    Post.where(user_id: self) + Post.where(user_id: friends)
+  end
 end

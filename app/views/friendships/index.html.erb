@@ -2,14 +2,13 @@
 <h3>My friends</h3>
 <% @friends.each do |friend| %>
  <div>	<%= friend.email %></div>
- <%= link_to 'View Profile', user_path(friend), class:'btn btn-info' %>
+ <%= link_to 'View Profile', user_profile_path(friend), class:'btn btn-info' %>
 
  <%= form_tag  deny_request_path(friend.id) ,method: 'delete' do %>
- <%= submit_tag "delete #{friend.first_name}" %>
+ <%= submit_tag "unfriend #{friend.first_name}" %>
  <% end %>
 
 
- <%= link_to 'Remove Profile', deny_request_path(friend),method: :delete,confirm:'Are you sure', class:'btn btn-danger' %>
 <% end %>
 <h3>Requested friends</h3>
 <% @requested_friends.each do |requested_friend| %>

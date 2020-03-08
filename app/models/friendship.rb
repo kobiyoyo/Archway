@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-
+  validates :friend_id, uniqueness: true
   def self.accept(user, friend)
     transaction do
       updated_at = Time.now
