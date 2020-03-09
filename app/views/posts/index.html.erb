@@ -2,6 +2,7 @@
 <%= link_to 'Logout',destroy_user_session_path,method: :delete, 
         data: { confirm: "Are you sure you want to logout" } %>
         <p><%= link_to "Find Friends", users_path %></p>
+<p><%= link_to "My Friends", friends_path %></p>
 <table>
 <thead>
 <tbody>
@@ -29,3 +30,4 @@
 </table>
 <br>
 <%= link_to 'New Post', new_post_path %>
+
