@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../support/login_form'
 
 feature 'create user' do
   let(:user) { FactoryBot.create(:user_two, email: 'joeboy@gmail.com') }

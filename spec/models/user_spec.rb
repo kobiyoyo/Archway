@@ -18,5 +18,12 @@ RSpec.describe User, type: :model do
     end
 
     it { should have_many(:posts) }
+    it { should have_many(:likes) }
+    it { should have_many(:comments) }
+    it { should have_many(:friendships) }
+    it { should have_many(:accepted_friendships) }
+    it { should have_many(:requested_friendships) }
+    it { should have_many(:pending_friendships) }
+    it { should have_many(:friends) }
   end
 end

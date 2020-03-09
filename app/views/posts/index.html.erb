@@ -1,10 +1,12 @@
 <h1>Posts</h1>
-<%= link_to 'LogOut',destroy_user_session_path,method: :delete, 
+<%= link_to 'Logout',destroy_user_session_path,method: :delete, 
         data: { confirm: "Are you sure you want to logout" } %>
+        <p><%= link_to "Find Friends", users_path %></p>
+<p><%= link_to "My Friends", friends_path %></p>
 <table>
 <thead>
 <tbody>
-<% current_user.posts.each do |post|%>
+<% current_user.user_friends_post.each do |post| %>
  <tr>
   <td>author: <%= post.user.first_name %> Post: <%= post.content%></td>
   <td><%= link_to 'Show', post%></td>
@@ -28,3 +30,4 @@
 </table>
 <br>
 <%= link_to 'New Post', new_post_path %>
+
