@@ -3,6 +3,6 @@
 <h1><%= user.gender %></h1>
 
 <h1><%= user.date_of_birth %></h1>
-<%= link_to "Add Friend", add_friend_path(user), method: :post %>
+<%= button_to "Add Friend", add_friend_path(user), method: :post %>
  
 <% end %> 
