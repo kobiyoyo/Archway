@@ -1,0 +1,24 @@
+<% if @friends.count > 0 || @requested_friends.count > 0 %>
+<h3>My friends</h3>
+<% @friends.each do |friend| %>
+ <div>	<%= friend.email %></div>
+ <%= link_to 'View Profile', user_profile_path(friend), class:'btn btn-info' %>
+
+ <%= form_tag  deny_request_path(friend.id) ,method: 'delete' do %>
+ <%= submit_tag "unfriend #{friend.first_name}" %>
+ <% end %>
+
+
+<% end %>
+<h3>Requested friends</h3>
+<% @requested_friends.each do |requested_friend| %>
+ <div>	<%= requested_friend.email %> </div>
+ <%= link_to 'View Profile', user_path(requested_friend), class:'btn btn-info' %>
+ <%= link_to 'Accept', accept_request_path(requested_friend), method: :put, class:'btn btn-success' %>
+ <%= link_to 'Decline', deny_request_path(requested_friend), method: :delete, class:'btn btn-danger' %>
+<% end %>
+<% else %>
+<div>
+	You dont have any friends.
+</div>
+<% end %>

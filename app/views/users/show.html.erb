@@ -1,0 +1,23 @@
+<p>Username: <%= @user.first_name %></p>
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friends %>
+    <li>
+
+      <%= friendship.email %>
+     
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Friends", users_path %></p>
+<h2>Pending Friends</h2>
+<ul>
+  <% for pending_friend in @user.pending_friends %>
+    <li>
+
+      <%= pending_friend.email %>
+     
+    </li>
+  <% end %>
+</ul>
