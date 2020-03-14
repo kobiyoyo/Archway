@@ -3,31 +3,7 @@
         data: { confirm: "Are you sure you want to logout" } %>
         <p><%= link_to "Find Friends", users_path %></p>
 <p><%= link_to "My Friends", friends_path %></p>
-<table>
-<thead>
-<tbody>
-<% current_user.user_friends_post.each do |post| %>
- <tr>
-  <td>author: <%= post.user.first_name %> Post: <%= post.content%></td>
-  <td><%= link_to 'Show', post %></td>
-  <td><%= link_to 'Edit', edit_post_path(post)%></td>
-  <td><%= link_to "Delete", post_path(post), method: :delete, 
-        data: { confirm: "Are you sure you want to delete this post"} %></td>
-        <td><p><%= post.likes.count %> <%= ( post.likes.count ) == 1 ? 'Like' : 'Likes' %></p> </td>
- <td><% post.comments.each do |comment| %>
- 	   <p>	<%= comment.user.first_name %> </p>
- 	   <p>	<%= comment.content %> </p>
- 	<% end %>
- </td>
-  <td>
 
-            <%= render "comments/form" ,post: post %>  
- </td>
- </tr>
-  
- <% end %>
-</tbody>
-</table>
 <br>
 <% current_user.user_friends_post.each do |post| %>
 <div class="columns is-mobile">
@@ -41,49 +17,21 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4"><%= post.user.first_name %></p>
-        <p class="subtitle is-6">@<%= post.user.first_name %><%= post.user.last_name %></p>
+        <div class="columns is-mobile">
+           <div class="column is-6">
+             <p class="title is-4"><%= post.user.first_name %></p>
+             <p class="subtitle is-6">@<%= post.user.first_name %><%= post.user.last_name %></p>
+           </div>
+           <% if current_user == post.user %>
+            <div class="column is-6">
+                <%= link_to 'Show', post %>
+<%= link_to 'Edit', edit_post_path(post)%>
+<%= link_to "Delete", post_path(post), method: :delete, 
+        data: { confirm: "Are you sure you want to delete this post"} %>
+           </div>
+           <% end %>
        <!--  <p class="is-12"> <time class="is-small" datetime="2016-1-1"> 1 Jan 2016</time></p> -->
-           <div class="dropdown">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-      <span>Click me</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-    <div class="dropdown-content">
-      <a href="#" class="dropdown-item">
-        Overview
-      </a>
-      <a href="#" class="dropdown-item">
-        Modifiers
-      </a>
-      <a href="#" class="dropdown-item">
-        Grid
-      </a>
-      <a href="#" class="dropdown-item">
-        Form
-      </a>
-      <a href="#" class="dropdown-item">
-        Elements
-      </a>
-      <a href="#" class="dropdown-item">
-        Components
-      </a>
-      <a href="#" class="dropdown-item">
-        Layout
-      </a>
-      <hr class="dropdown-divider">
-      <a href="#" class="dropdown-item">
-        More
-      </a>
-    </div>
-  </div>
-</div>
-
+        </div>  
       </div>
     </div>
   </div>

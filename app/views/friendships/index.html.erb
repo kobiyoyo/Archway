@@ -13,7 +13,7 @@
 <h3>Requested friends</h3>
 <% @requested_friends.each do |requested_friend| %>
  <div>	<%= requested_friend.email %> </div>
- <%= link_to 'View Profile', user_path(requested_friend), class:'btn btn-info' %>
+ <%= link_to 'View Profile', user_profile_path(requested_friend), class:'btn btn-info' %>
  <%= button_to 'Accept', accept_request_path(requested_friend), method: :put, class:'btn btn-success' %>
  <%= button_to 'Decline', deny_request_path(requested_friend), method: :delete, class:'btn btn-danger' %>
 <% end %>
