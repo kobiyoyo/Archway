@@ -3,10 +3,8 @@
 <% @friends.each do |friend| %>
  <div>	<%= friend.email %></div>
  <%= link_to 'View Profile', user_profile_path(friend), class:'btn btn-info' %>
+ <%= button_to 'Decline', deny_request_path(friend), method: :delete, class:'btn btn-danger' %>
 
- <%= form_tag  deny_request_path(friend.id) ,method: 'delete' do %>
- <%= submit_tag "unfriend #{friend.first_name}" %>
- <% end %>
 
  
 <% end %>

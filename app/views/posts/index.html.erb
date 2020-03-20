@@ -53,7 +53,7 @@
     </div>
   </div>
 </div>
-<% post.comments.each do |comment| %>
+<% post.comments.includes(:user).each do |comment| %>
 <article class="media">
 
   <div class="media-content">
@@ -82,12 +82,12 @@
 
   <% end %>
      <%= render "comments/form" ,post: post %>  
-
+  </div>
+</div>
 <% end %>
 
 
-  </div>
-</div>
+
 
 <%= link_to 'New Post', new_post_path %>
 
