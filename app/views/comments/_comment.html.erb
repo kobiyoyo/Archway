@@ -7,8 +7,13 @@
     <article class="media">
       <figure class="media-left">
         <p class="image is-48x48">
+    
           <img src="https://bulma.io/images/placeholders/96x96.png">
         </p>
+        <% if current_user == comment.user %>
+    
+       <div>delete</div>
+           <% end %>
       </figure>
       <div class="media-content">
         <div class="content">

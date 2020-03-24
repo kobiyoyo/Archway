@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :friends, through: :accepted_friendships
   has_many :requested_friends, through: :requested_friendships, source: :friend
   has_many :pending_friends, through: :pending_friendships, source: :friend
-
+  has_one_attached :avatar
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

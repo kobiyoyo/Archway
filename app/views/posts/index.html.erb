@@ -1,4 +1,5 @@
 <h1>Posts</h1>
+ <%= link_to 'Edit Profile', edit_user_registration_path %>
 <%= link_to 'Logout',destroy_user_session_path,method: :delete, 
         data: { confirm: "Are you sure you want to logout" } %>
         <p><%= link_to "Find Friends", users_path %></p>
