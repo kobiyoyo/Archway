@@ -11,6 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'puma', '~> 4.1'
+gem 'tinymce-rails'
 # Use SCSS for stylesheets
 gem "bulma-rails", "~> 0.8.0"
 gem 'jquery-rails'

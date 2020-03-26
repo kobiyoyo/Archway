@@ -28,6 +28,6 @@ class User < ApplicationRecord
   end
 
   def user_friends_post
-    Post.where(user_id: self) + Post.where(user_id: friends)
+    Post.where(user_id: self) + Post.where(user_id: friends).includes([:user])
   end
 end
