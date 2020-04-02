@@ -1,8 +1,15 @@
  <%= form_for [post, @comment] do |form| %>
-<article class="media">
+<article class="media space-x">
   <figure class="media-left">
     <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
+          <% if current_user.avatar.attached?  %>
+              <%= image_tag current_user.avatar,size: '128' %>
+          <% else %>
+                 <img src="https://bulma.io/images/placeholders/128x128.png">
+           <% end %>
+
+
+
     </p>
   </figure>
   <div class="media-content">

@@ -1,8 +1,17 @@
 
+
     <%= form_for( @post) do |f| %>
-          <%= f.label :content%>
-          <%= f.text_area :content, placeholder: "What is on your mind" %>
-          <%= f.submit class: 'btn btn-primary btn-lg' %>    
+    <div class="field">
+      <div class="control">
+          <%= f.text_area :content, placeholder: "What is on your mind, #{current_user.first_name}?" ,rows: 5, cols: 25, :class => "tinymce" %>
+          <%= tinymce uploadimage: true %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+         <%= f.file_field :image, class:'input' %>
+      </div>
+    </div>
+          <%= f.submit class: 'button is-light is-rounded is-small space-x is-left' %>    
     <% end %>
-      [ <%= link_to "Return to home page", posts_path %> ]
- 
+  

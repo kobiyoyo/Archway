@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_post, only: [:create]
-  before_action :set_comment, only: %i[destroy]
+  # before_action :set_comment, only: %i[destroy]
 
   def new
     @comment = @post.comments.build
@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     @comment.destroy
     flash[:danger] = 'Comment was successfully deleted'
     redirect_to post_path
@@ -28,9 +30,9 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
+  # def set_comment
+  #   @comment = Comment.find(params[:id])
+  # end
 
   def find_post
     @post = Post.find(params[:post_id])

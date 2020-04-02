@@ -28,6 +28,6 @@ class User < ApplicationRecord
   end
 
   def user_friends_post
-    Post.where(user_id: self) + Post.where(user_id: friends).includes([:user])
+    Post.where(user_id: self).includes([:user]).order('created_at DESC').includes([:image_attachment]).includes([:likes]) + Post.where(user_id: friends).includes([:user]).order('created_at DESC').includes([:image_attachment]).includes([:likes])
   end
 end

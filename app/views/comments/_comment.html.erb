@@ -12,7 +12,7 @@
         </p>
         <% if current_user == comment.user %>
     
-       <div>delete</div>
+   
            <% end %>
       </figure>
       <div class="media-content">
@@ -22,7 +22,8 @@
             <br>
              <%= comment.content %>
             <br>
-            <small> 2 hrs</small>
+            <small> <%  diff = Time.now.to_i - comment.created_at.to_i %>
+            <%= distance_of_time_in_words(diff) %> ago</small>
           </p>
         </div>
       </div>

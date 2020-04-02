@@ -6,6 +6,11 @@
 <p><%= link_to "My Friends", friends_path %></p>
 
 <br>
+<div class="columns is-mobile">
+  <div class="column is-6 is-offset-3">
+    <%= render 'form'%>
+    </div>
+  </div>
 <%= render current_user.user_friends_post %>
 
 <%= link_to 'New Post', new_post_path %>

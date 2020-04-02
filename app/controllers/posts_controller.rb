@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update show destroy]
   def index
     @posts = Post.all.order('created_at DESC')
+    @post = Post.new
   end
 
   def new
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content,:image)
   end
 
   def set_post

@@ -1,3 +1,21 @@
+<h1><%= @user.first_name %> </h1>
+<% if @user.avatar.attached? %>
+	  <%= image_tag @user.avatar,size: '100' %>
+ <% end %>
+<h1><%= @user.last_name %> </h1>
+<h1><%= @user.email %> </h1>
+<h1><% if current_user == @user %> </h1>
+<%= link_to 'Edit Profile', edit_user_registration_path %>
+<% end %>
+
+
+
+
+
+
+
+
+
 <% if @friends.count > 0 || @requested_friends.count > 0 %>
 <h3>My friends</h3>
 <% @friends.each do |friend| %>
@@ -5,8 +23,6 @@
  <%= link_to 'View Profile', user_profile_path(friend), class:'btn btn-info' %>
  <%= button_to 'Decline', deny_request_path(friend), method: :delete, class:'btn btn-danger' %>
 
-
- 
 <% end %>
 <h3>Requested friends</h3>
 <% @requested_friends.each do |requested_friend| %>

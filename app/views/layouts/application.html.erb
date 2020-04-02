@@ -4,17 +4,21 @@
     <title>FACEBOOKClone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+         <%= tinymce_assets %>
+ <script type="text/javascript" src="/assets/tinymce.js"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
   <% flash.each do |key,value|%>
-  <div class="alert alert-<%= key %>" role="alert">
+  <div class="notification is-<%= key %> is-light">
     <%= value %>
-  </div>
+</div>
+
   <% end %>
   <%= render "shared/nav" %>  
 
