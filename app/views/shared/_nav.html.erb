@@ -1,0 +1,72 @@
+<% if user_signed_in? %>
+
+<nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+            <%= image_tag("archway.svg", size: "112") %> <h1 class="title is-2">Archway</h1>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true">hello</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+		<%= link_to 'Edit Profile', edit_user_registration_path,class:'navbar-item' %>
+		<%= link_to "Find Friends", users_path,class:'navbar-item' %>
+		<%= link_to "My Friends", friends_path,class:'navbar-item' %>
+         <%= link_to 'Logout',destroy_user_session_path,method: :delete, 
+        data: { confirm: "Are you sure you want to logout" },class:'button is-dark ml-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<% else %>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+       <%= image_tag("archway.svg", size: "112") %> <h1 class="title is-2">Archway</h1>
+     
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+ 
+            <strong>  <%= link_to "Sign up", new_registration_path(resource_name),class:'button is-primary mr-3' %> </strong>
+         
+      
+          <%= link_to "Log in", new_session_path(resource_name),class:'button is-light mr-3'  %>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<% end %>
+
+
+
+
+
+
+

@@ -14,15 +14,16 @@
   </head>
 
   <body>
-  <% flash.each do |key,value|%>
+
+  <%= render "shared/nav" %>  
+
+  <div class="mt-10">
+      <% flash.each do |key,value|%>
   <div class="notification is-<%= key %> is-light">
     <%= value %>
 </div>
-
   <% end %>
-  <%= render "shared/nav" %>  
-
     <%= yield %>
-
+</div>
   </body>
 </html>

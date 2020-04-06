@@ -1,11 +1,3 @@
-<h1>Posts</h1>
- <%= link_to 'Edit Profile', edit_user_registration_path %>
-<%= link_to 'Logout',destroy_user_session_path,method: :delete, 
-        data: { confirm: "Are you sure you want to logout" } %>
-        <p><%= link_to "Find Friends", users_path %></p>
-<p><%= link_to "My Friends", friends_path %></p>
-
-<br>
 <div class="columns is-mobile">
   <div class="column is-6 is-offset-3">
     <%= render 'form'%>
@@ -13,5 +5,5 @@
   </div>
 <%= render current_user.user_friends_post %>
 
-<%= link_to 'New Post', new_post_path %>
+
 
