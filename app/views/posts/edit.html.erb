@@ -1,2 +1,7 @@
-<%= render 'form' %>
-<%= link_to 'Back to posts path', posts_path(@post) %>
+
+<div class="columns is-mobile space-x">
+  <div class="column is-6 is-offset-3">
+    <%= render 'form'%>
+    <%= link_to 'Back to posts', posts_path(@post), class: "button is-primary space-x"  %>
+    </div>
+  </div>

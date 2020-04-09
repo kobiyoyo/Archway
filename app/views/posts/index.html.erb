@@ -1,33 +1,9 @@
-<h1>Posts</h1>
-<%= link_to 'Logout',destroy_user_session_path,method: :delete, 
-        data: { confirm: "Are you sure you want to logout" } %>
-        <p><%= link_to "Find Friends", users_path %></p>
-<p><%= link_to "My Friends", friends_path %></p>
-<table>
-<thead>
-<tbody>
-<% current_user.user_friends_post.each do |post| %>
- <tr>
-  <td>author: <%= post.user.first_name %> Post: <%= post.content%></td>
-  <td><%= link_to 'Show', post%></td>
-  <td><%= link_to 'Edit', edit_post_path(post)%></td>
-  <td><%= link_to "Delete", post_path(post), method: :delete, 
-        data: { confirm: "Are you sure you want to delete this post"} %></td>
-        <td><p><%= post.likes.count %> <%= ( post.likes.count ) == 1 ? 'Like' : 'Likes' %></p> </td>
- <td><% post.comments.each do |comment| %>
- 	   <p>	<%= comment.user.first_name %> </p>
- 	   <p>	<%= comment.content %> </p>
- 	<% end %>
- </td>
-  <td>
+<div class="columns is-mobile">
+  <div class="column is-6 is-offset-3">
+    <%= render 'form'%>
+    </div>
+  </div>
+<%= render current_user.user_friends_post %>
 
-            <%= render "comments/form" ,post: post %>  
- </td>
- </tr>
-  
- <% end %>
-</tbody>
-</table>
-<br>
-<%= link_to 'New Post', new_post_path %>
+
 
