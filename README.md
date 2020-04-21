@@ -36,9 +36,9 @@ $ cd rails c
 
 ## Contributors
 
-* [Adama Chubiyojo Desmond](https://github.com/kobiyoyo)[(Email)](mailto:Adamachubi@gmail.com)
+* [Adama Chubiyojo Desmond](https://github.com/kobiyoyo)
 
-* [Danilo Zagarcanin ](https://github.com/danilozag1992)[(Email)](mailto:danilozagarcanin@gmail.com)
+* [Danilo Zagarcanin ](https://github.com/danilozag1992)
 
 ## Contributing
 
