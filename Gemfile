@@ -11,7 +11,10 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'puma', '~> 4.1'
+gem 'tinymce-rails'
 # Use SCSS for stylesheets
+gem "bulma-rails", "~> 0.8.0"
+gem 'jquery-rails'
 gem 'sass-rails', '>= 6'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -49,6 +52,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

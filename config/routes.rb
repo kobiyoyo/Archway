@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
+  delete 'posts/:id/delete', to: 'posts#destroy', as: 'delete_post'
   get 'friends', to: 'friendships#index', as: 'friends'
   post 'friends/create/:id', to: 'friendships#create', as: 'add_friend'
   put 'friends/accept/:id', to: 'friendships#accept', as: 'accept_request'

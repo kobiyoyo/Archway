@@ -1,0 +1,10 @@
+height: 220
+menubar: false
+toolbar:
+  - formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | uploadimage
+plugins:
+  - advlist autolink lists link image charmap print preview anchor
+  - searchreplace visualblocks code fullscreen
+  - insertdatetime media table paste code help wordcount
+  - uploadimage
+uploadimage: false

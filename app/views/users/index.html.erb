@@ -1,8 +1,40 @@
-<% @users.each do |user| %>
-<h1><%= user.first_name %> <%= user.last_name %></h1>
-<h1><%= user.gender %></h1>
+  <% @users.each do |user| %>
+    <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+            <% if user.avatar.attached?  %>
+                    <%= image_tag user.avatar,size: '128' ,class:'is-rounded' %>
+                <% else %>
+                       <img src="https://bulma.io/images/placeholders/128x128.png" class="is-rounded">
+                 <% end %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= user.first_name %> <%= user.last_name %></strong> 
+                <br>
+                <strong><%= user.gender %></strong>
+                <br>
+                <strong><%= user.date_of_birth %></strong>
+                <br>
+                <%= button_to "Add Friend", add_friend_path(user), method: :post %>
+              </p>
+            </div>
+
+
+          </div>
+        </article>
+    </div>
 
 <h1><%= user.date_of_birth %></h1>
 <%= button_to "Add Friend", add_friend_path(user), method: :post %>
  
+
 <% end %> 
+
+
+
+
+

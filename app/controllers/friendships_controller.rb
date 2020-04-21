@@ -2,6 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :find_user, only: %i[create accept deny destroy]
 
   def index
+    @users = User.where.not(id: current_user).where.not(id: current_user.friends)
     @user = current_user
     @friends = @user.friends
     @pending_friends = @user.pending_friends
@@ -11,7 +12,7 @@ class FriendshipsController < ApplicationController
   def create
     Friendship.request(@user_one, @friend)
     flash[:success] = "Friend request has been sent to #{@friend.first_name} #{@friend.last_name}."
-    redirect_to user_path(@friend)
+    redirect_to friends_path
   end
 
   def accept
