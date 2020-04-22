@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-  validates :friend_id, uniqueness: true
+  validates :friend_id, presence: true
   def self.accept(user, friend)
     transaction do
       updated_at = Time.now
@@ -10,14 +10,7 @@ class Friendship < ApplicationRecord
     end
   end
 
-  def self.request(user, friend)
-    return if user == friend
 
-    transaction do
-      create(user: user, friend: friend, status: 'pending')
-      create(user: friend, friend: user, status: 'requested')
-    end
-  end
 
   def self.breakup(user, friend)
     transaction do
@@ -27,9 +20,9 @@ class Friendship < ApplicationRecord
   end
 
   def self.accept_one_side(user, friend, updated_at)
-    request = find_by_user_id_and_friend_id(user, friend)
-    request.status = 'accepted'
-    request.updated_at = updated_at
-    request.save!
+    request = self.where(user_id: user,friend_id: friend)
+    request.update(status:'accepted')
+    request.update(updated_at:updated_at)
+    
   end
 end

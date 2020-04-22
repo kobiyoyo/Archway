@@ -10,9 +10,23 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    Friendship.request(@user_one, @friend)
-    flash[:success] = "Friend request has been sent to #{@friend.first_name} #{@friend.last_name}."
-    redirect_to friends_path
+    
+    if @user_one !=  @friend 
+      is_friendship = current_user.friendships.exists?(friend: @friend) 
+      if !is_friendship 
+        current_user.friendships.create(friend: @friend, status: 'pending')
+        @friend.friendships.create(friend: @user_one, status: 'requested')
+        flash[:success] = "Friend request has been sent to #{@friend.first_name} #{@friend.last_name}."
+        redirect_to friends_path
+      else
+        flash[:success] = "Friend request already sent"
+        redirect_to friends_path
+      end
+
+    else
+      flash[:danger] = "You can't friend yourself"
+      redirect_to friends_path
+    end
   end
 
   def accept
