@@ -58,7 +58,7 @@ The project is part of a series of projects to be completed by students of [Micr
 > Clone the repository to your local machine
 
 ```sh
-$ git clone https://github.com//danilozag1992/FACEBOOK-CLONE/.git
+$ git clone https://github.com//kobiyoyo/FACEBOOK-CLONE/.git
 ```
 
 > cd into the directory
@@ -99,7 +99,7 @@ $ cd rails c
 
 ## Contributing
 
-1. Fork it (https://github.com/danilozag1992/FACEBOOK-CLONE/fork)
+1. Fork it (https://github.com/kobiyoyo/FACEBOOK-CLONE/fork)
 2. Create your feature branch (git checkout -b feature/[choose-a-name])
 3. Commit your changes (git commit -am 'what this commit will fix/add')
 4. Push to the branch (git push origin feature/[chosen-name])
