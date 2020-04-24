@@ -41,7 +41,7 @@ $ git clone https://github.com//danilozag1992/FACEBOOK-CLONE/.git
 > cd into the directory
 
 ```sh
-$ cd facebook
+$ cd FACEBOOK-CLONE 
 $ bundle install
 $ rails db:migrate
 ```
