@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h1 align="center">FACEBOOK CLONE</h1>
+  <h1 align="center">Social Media Clone</h1>
 
   <p align="center">
     A Ruby on Rails application
@@ -18,7 +18,7 @@
 
 
 ## Description
-The Facebook-clone project is an implementation of Facebook using Ruby on Rails. The technical goals of the project is to emulate some of the functionalities that Facebook has implemented, such as allowing the users to have friends in a symmetrical irreflexive way, accept & send friend requests, submit posts and see the posts of their friends and comment on the posts of their friends.
+The Social media-clone project is an implementation of Facebook using Ruby on Rails. The technical goals of the project are to emulate some functionalities that Facebook has implemented, such as allowing the users to have friends in a symmetrical irreflexive way, accept & send friend requests, submit posts and see the posts of their friends and comment on the posts of their friends.
 
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
@@ -64,7 +64,6 @@ $ git clone https://github.com//kobiyoyo/FACEBOOK-CLONE/.git
 > cd into the directory
 
 ```sh
-$ cd FACEBOOK-CLONE 
 $ bundle install --without production
 ```
 
