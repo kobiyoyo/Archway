@@ -23,11 +23,34 @@ The Facebook-clone project is an implementation of Facebook using Ruby on Rails.
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
 
-## Technologies
-
+## Built With
 - Ruby 
-- Rails 
-- Rspec
+- Ruby on Rails
+- Bulma
+- Bullet
+- Rubocop
+- PostgreSQL
+
+## Features
+- A user can signup/login
+- A user can add post.
+- A user can add comments to posts.
+- Sending friend requests.
+- Accepting friend requests.
+- Edit setting and profile information.
+
+
+
+## Future features
+* Ability to login with Facebook.
+* Logout after 5 minutes of inactivity
+
+
+## Environment
+- Ruby on Rails version 6.0
+- [Bootstrap-sass](https://www.rubydoc.info/gems/bootstrap-sass/3.3.6) is a Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications version 3.3.7
+- Puma: A Ruby Web Server Built For Concurrency version '3.9.1'
+
 ## Live Demo
 [Live Demo Link](https://powerful-escarpment-41375.herokuapp.com/login)
 ## Usage
