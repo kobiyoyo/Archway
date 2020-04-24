@@ -65,8 +65,7 @@ $ git clone https://github.com//danilozag1992/FACEBOOK-CLONE/.git
 
 ```sh
 $ cd FACEBOOK-CLONE 
-$ bundle install
-$ rails db:migrate
+$ bundle install --without production
 ```
 
 
