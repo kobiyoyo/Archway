@@ -6,7 +6,7 @@
     A Ruby on Rails application
     <br />
     <br />
-    <a href="https://calm-temple-12952.herokuapp.com/login">View Demo</a>
+    <a href="https://powerful-escarpment-41375.herokuapp.com/login">View Demo</a>
     ·
     <a href="https://github.com/kobiyoyo/FACEBOOK-CLONE/issues">Report Bug</a>
     ·
@@ -29,7 +29,7 @@ The project is part of a series of projects to be completed by students of [Micr
 - Rails 
 - Rspec
 ## Live Demo
-[Live Demo Link](https://calm-temple-12952.herokuapp.com/login)
+[Live Demo Link](https://powerful-escarpment-41375.herokuapp.com/login)
 ## Usage
 
 > Clone the repository to your local machine
