@@ -1,6 +1,24 @@
-# FACEBOOK CLONE
+<br />
+<p align="center">
+  <h1 align="center">FACEBOOK CLONE</h1>
 
-The objective is to build a facebook clone with core features of the platform – users, profiles, “friendship”, posts, news feed, comments and “liking”. Sign-in with the real Facebook by using Omniauth and Devise is also implemented.
+  <p align="center">
+    A Ruby on Rails application
+    <br />
+    <br />
+    <a href="https://calm-temple-12952.herokuapp.com/login">View Demo</a>
+    ·
+    <a href="https://github.com/kobiyoyo/FACEBOOK-CLONE/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/kobiyoyo/FACEBOOK-CLONE/issues">Request Feature</a>
+  </p>
+  <img src="app/assets/images/screenshot.png" alt="facebook-project">
+</p>
+
+
+
+## Description
+The Facebook-clone project is an implementation of Facebook using Ruby on Rails. The technical goals of the project is to emulate some of the functionalities that Facebook has implemented, such as allowing the users to have friends in a symmetrical irreflexive way, accept & send friend requests, submit posts and see the posts of their friends and comment on the posts of their friends.
 
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
