@@ -5,16 +5,23 @@
 
     
     <article class="media">
+      <% if comment.user.avatar.attached? %>
+           <figure class="media-left">
+        <p class="image is-48x48">
+              <%= image_tag comment.user.avatar,size: '100' %>
+          </p>
+      </figure>
+      <% else %>
       <figure class="media-left">
         <p class="image is-48x48">
-    
           <img src="https://bulma.io/images/placeholders/96x96.png">
         </p>
-        <% if current_user == comment.user %>
-    
-   
-           <% end %>
       </figure>
+      <% end %>
+
+
+
+
       <div class="media-content">
         <div class="content">
           <p>
