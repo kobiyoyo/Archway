@@ -47,19 +47,19 @@ $ rails db:migrate
 ```
 
 
-- Next,create & migrate the database:
+> Next,create & migrate the database:
 ```
 $ rails db:create
 
 $ rails db:migrate
 ```
 
-- Run the app in a local server:
+> Run the app in a local server:
 
 ```
 $ rails server
 ```
-- Finally, run the test suite to verify that everything is working correctly:
+> Finally, run the test suite to verify that everything is working correctly:
 
 ```
 $ rspec
