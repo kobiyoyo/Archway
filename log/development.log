@@ -25207,3 +25207,578 @@ Processing by FriendshipsController#index as HTML
 Completed 200 OK in 62ms (Views: 47.6ms | ActiveRecord: 7.9ms | Allocations: 13349)
 
 
+Started GET "/" for ::1 at 2020-04-24 23:06:16 +0100
+  [1m[35m (80.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (45.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 3122.9ms | Allocations: 183495)
+  [1m[36mPost Load (27.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (56.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/index.html.erb within layouts/application (Duration: 3349.1ms | Allocations: 189635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 14.4ms | Allocations: 998)
+Completed 200 OK in 12312ms (Views: 11691.4ms | ActiveRecord: 336.7ms | Allocations: 415525)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tinymce/plugins/uploadimage/plugin.js"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2020-04-24 23:06:44 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != $1 AND "users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $2 AND "friendships"."status" = $3)[0m  [["id", 3], ["user_id", 3], ["status", "accepted"]]
+  ↳ app/views/users/index.html.erb:1
+  [1m[36mActiveStorage::Attachment Load (23.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 202.5ms | Allocations: 8861)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 3.6ms | Allocations: 613)
+Completed 200 OK in 261ms (Views: 212.0ms | ActiveRecord: 33.5ms | Allocations: 19627)
+
+
+Started GET "/profile" for ::1 at 2020-04-24 23:06:49 +0100
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.4ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 135.9ms | Allocations: 4485)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 2.1ms | Allocations: 613)
+Completed 200 OK in 204ms (Views: 176.3ms | ActiveRecord: 1.0ms | Allocations: 15688)
+
+
+Started GET "/" for ::1 at 2020-04-24 23:06:52 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.8ms | Allocations: 674)
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 2752)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 3.3ms | Allocations: 610)
+Completed 200 OK in 41ms (Views: 27.9ms | ActiveRecord: 4.0ms | Allocations: 12202)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tinymce/plugins/uploadimage/plugin.js"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/posts" for ::1 at 2020-04-24 23:07:35 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"kquh6m638l4+da3jQe26vPa3b16+08QMBYCWCImjygmSSYJDRJEBTldb7p5urKXMszbtnlfCPjsDdFesIciayg==", "post"=>{"content"=>"<p>Hello am coming</p>", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f97bae3fd10 @tempfile=#<Tempfile:/tmp/RackMultipart20200424-5782-flub6q.jpg>, @original_filename="foto_no_exif (1).jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"foto_no_exif (1).jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Post"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (199.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "<p>Hello am coming</p>"], ["user_id", 3], ["created_at", "2020-04-24 22:07:35.887892"], ["updated_at", "2020-04-24 22:07:35.887892"]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mActiveStorage::Blob Load (50.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mActiveStorage::Blob Create (15.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "criebojzer08n5jnvqk8q18ggwy3"], ["filename", "foto_no_exif (1).jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 12781], ["checksum", "JX8b6gTT6cvWyjV8HjHX6w=="], ["created_at", "2020-04-24 22:07:36.875423"]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mActiveStorage::Attachment Create (16.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-04-24 22:07:36.897364"]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mPost Update (3.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2020-04-24 22:07:36.921977"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[35m (31.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+[36m  Disk Storage (33.8ms) [0m[32mUploaded file to key: criebojzer08n5jnvqk8q18ggwy3 (checksum: JX8b6gTT6cvWyjV8HjHX6w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 17f57bd5-ba92-4983-b0cf-9c73a1e28636) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f97bb9ad2b0 @uri=#<URI::GID gid://facebook-clone/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/
+Completed 302 Found in 1568ms (ActiveRecord: 387.5ms | Allocations: 69987)
+
+
+Started GET "/" for ::1 at 2020-04-24 23:07:37 +0100
+Processing by PostsController#index as HTML
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636] Performing ActiveStorage::AnalyzeJob (Job ID: 17f57bd5-ba92-4983-b0cf-9c73a1e28636) from Async(active_storage_analysis) enqueued at 2020-04-24T22:07:37Z with arguments: #<GlobalID:0x00007f97cc05c0b0 @uri=#<URI::GID gid://facebook-clone/ActiveStorage::Blob/1>>
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636] [36m  Disk Storage (5.1ms) [0m[34mDownloaded file from key: criebojzer08n5jnvqk8q18ggwy3[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636] Skipping image analysis because the mini_magick gem isn't installed
+  Rendered posts/_form.html.erb (Duration: 9.8ms | Allocations: 1460)
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636]   [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636]   [1m[36mActiveStorage::Blob Update (1.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+  [1m[36mPost Load (41.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636]   [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f57bd5-ba92-4983-b0cf-9c73a1e28636] Performed ActiveStorage::AnalyzeJob (Job ID: 17f57bd5-ba92-4983-b0cf-9c73a1e28636) from Async(active_storage_analysis) in 72.28ms
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = $1 AND "active_storage_attachments"."name" = $2 AND "active_storage_attachments"."record_id" = $3[0m  [["record_type", "Post"], ["name", "image"], ["record_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mLike Load (16.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:38
+  [1m[35m (26.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:60
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/comments/_form.html.erb:5
+  Rendered comments/_form.html.erb (Duration: 14.7ms | Allocations: 1856)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 116.2ms | Allocations: 9729)
+  Rendered posts/index.html.erb within layouts/application (Duration: 237.5ms | Allocations: 21850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 1.3ms | Allocations: 610)
+Completed 200 OK in 268ms (Views: 165.9ms | ActiveRecord: 96.2ms | Allocations: 32440)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--031e053c4b38e602f15e98f44c63e0fdf2e9f142/foto_no_exif%20(1).jpg" for ::1 at 2020-04-24 23:07:38 +0100
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--031e053c4b38e602f15e98f44c63e0fdf2e9f142", "filename"=>"foto_no_exif (1)"}
+  [1m[36mActiveStorage::Blob Load (4.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (1.4ms) [0m[34mGenerated URL for file at key: criebojzer08n5jnvqk8q18ggwy3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9/foto_no_exif%20(1).jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22foto_no_exif+%25281%2529.jpg%22%3B+filename%2A%3DUTF-8%27%27foto_no_exif%2520%25281%2529.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9/foto_no_exif%20(1).jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22foto_no_exif+%25281%2529.jpg%22%3B+filename%2A%3DUTF-8%27%27foto_no_exif%2520%25281%2529.jpg
+Completed 302 Found in 39ms (ActiveRecord: 4.8ms | Allocations: 2299)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9/foto_no_exif%20(1).jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22foto_no_exif+%25281%2529.jpg%22%3B+filename%2A%3DUTF-8%27%27foto_no_exif%2520%25281%2529.jpg" for ::1 at 2020-04-24 23:07:39 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"foto_no_exif %281%29.jpg\"; filename*=UTF-8''foto_no_exif%20%281%29.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9", "filename"=>"foto_no_exif (1)"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 412)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tinymce/plugins/uploadimage/plugin.js"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/profile" for ::1 at 2020-04-24 23:07:55 +0100
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2333)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 1.3ms | Allocations: 613)
+Completed 200 OK in 36ms (Views: 25.9ms | ActiveRecord: 1.3ms | Allocations: 11875)
+
+
+Started PUT "/" for ::1 at 2020-04-24 23:08:07 +0100
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"authenticity_token"=>"7Qb9Z7vVnkjjSH5AH3xc446h3I3p7wGFwJ1MUXJm4WJNhvWb+tZe1GPLrClZgCrr/LgtI4fN3vpFTGZJ7ep2ew==", "user"=>{"first_name"=>"week", "last_name"=>"week", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f97bc2eaa30 @tempfile=#<Tempfile:/tmp/RackMultipart20200424-5782-1fna4tz.png>, @original_filename="dad (1).png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"dad (1).png\"\r\nContent-Type: image/png\r\n">, "date_of_birth"=>"2020-04-01", "email"=>"wqeek@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (47.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "89hfe9fybbf7h8hxka9wc1h7byiu"], ["filename", "dad (1).png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 70840], ["checksum", "6WxUueL2ITH2Hijj7EkELw=="], ["created_at", "2020-04-24 22:08:07.922937"]]
+  [1m[36mActiveStorage::Attachment Create (1.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "User"], ["record_id", 3], ["blob_id", 2], ["created_at", "2020-04-24 22:08:07.976101"]]
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2020-04-24 22:08:07.982537"], ["id", 3]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (2.1ms) [0m[32mUploaded file to key: 89hfe9fybbf7h8hxka9wc1h7byiu (checksum: 6WxUueL2ITH2Hijj7EkELw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 329fd2fc-17eb-476b-9e2c-d0fadbd1db1e) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f97b8b59a30 @uri=#<URI::GID gid://facebook-clone/ActiveStorage::Blob/2>>
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e] Performing ActiveStorage::AnalyzeJob (Job ID: 329fd2fc-17eb-476b-9e2c-d0fadbd1db1e) from Async(active_storage_analysis) enqueued at 2020-04-24T22:08:08Z with arguments: #<GlobalID:0x00007f97cc08ec40 @uri=#<URI::GID gid://facebook-clone/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e] [36m  Disk Storage (0.4ms) [0m[34mDownloaded file from key: 89hfe9fybbf7h8hxka9wc1h7byiu[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 594ms (ActiveRecord: 68.2ms | Allocations: 28723)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e] Skipping image analysis because the mini_magick gem isn't installed
+Started GET "/" for ::1 at 2020-04-24 23:08:08 +0100
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e]   [1m[35m (8.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 2.4ms | Allocations: 661)
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e]   [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [329fd2fc-17eb-476b-9e2c-d0fadbd1db1e] Performed ActiveStorage::AnalyzeJob (Job ID: 329fd2fc-17eb-476b-9e2c-d0fadbd1db1e) from Async(active_storage_analysis) in 89.0ms
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = $1 AND "active_storage_attachments"."name" = $2 AND "active_storage_attachments"."record_id" = $3[0m  [["record_type", "Post"], ["name", "image"], ["record_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mActiveStorage::Blob Load (4.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:38
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:60
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/comments/_form.html.erb:5
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/comments/_form.html.erb:6
+  Rendered comments/_form.html.erb (Duration: 13.4ms | Allocations: 3234)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 55.3ms | Allocations: 11254)
+  Rendered posts/index.html.erb within layouts/application (Duration: 89.6ms | Allocations: 18478)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 2.8ms | Allocations: 605)
+Completed 200 OK in 132ms (Views: 102.7ms | ActiveRecord: 19.5ms | Allocations: 30153)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eaa3905cb97501ad10e522eb1e0240125e7b4ab6/dad%20(1).png" for ::1 at 2020-04-24 23:08:08 +0100
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eaa3905cb97501ad10e522eb1e0240125e7b4ab6", "filename"=>"dad (1)"}
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: 89hfe9fybbf7h8hxka9wc1h7byiu (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893/dad%20(1).png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22dad+%25281%2529.png%22%3B+filename%2A%3DUTF-8%27%27dad%2520%25281%2529.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893/dad%20(1).png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22dad+%25281%2529.png%22%3B+filename%2A%3DUTF-8%27%27dad%2520%25281%2529.png
+Completed 302 Found in 12ms (ActiveRecord: 1.2ms | Allocations: 1915)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893/dad%20(1).png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22dad+%25281%2529.png%22%3B+filename%2A%3DUTF-8%27%27dad%2520%25281%2529.png" for ::1 at 2020-04-24 23:08:08 +0100
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"dad %281%29.png\"; filename*=UTF-8''dad%20%281%29.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893", "filename"=>"dad (1)"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 369)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9/foto_no_exif%20(1).jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22foto_no_exif+%25281%2529.jpg%22%3B+filename%2A%3DUTF-8%27%27foto_no_exif%2520%25281%2529.jpg" for ::1 at 2020-04-24 23:08:08 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"foto_no_exif %281%29.jpg\"; filename*=UTF-8''foto_no_exif%20%281%29.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9", "filename"=>"foto_no_exif (1)"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 363)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tinymce/plugins/uploadimage/plugin.js"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/posts/1/comments" for ::1 at 2020-04-24 23:08:15 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"lsERwylZUxRlu9+WvK9a2l7fW3CvdpABxEm5mleU8I6f+JJ/xYqdqZNHE5zCxcB0s4FXRSARDTIVjGCcNhgtig==", "comment"=>{"content"=>"hello"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:38:in `find_post'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:12:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12:in `create'
+  [1m[36mComment Create (66.4ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at", "user_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "hello"], ["created_at", "2020-04-24 22:08:15.754975"], ["updated_at", "2020-04-24 22:08:15.754975"], ["user_id", 3], ["post_id", 1]]
+  ↳ app/controllers/comments_controller.rb:12:in `create'
+  [1m[35m (23.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 122ms (ActiveRecord: 93.9ms | Allocations: 7807)
+
+
+Started GET "/" for ::1 at 2020-04-24 23:08:15 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 2.5ms | Allocations: 659)
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = $1 AND "active_storage_attachments"."name" = $2 AND "active_storage_attachments"."record_id" = $3[0m  [["record_type", "Post"], ["name", "image"], ["record_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:38
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/posts/_post.html.erb:60
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 866.6ms | Allocations: 213559)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 945.1ms | Allocations: 222953)
+  Rendered posts/index.html.erb within layouts/application (Duration: 997.7ms | Allocations: 229308)
+Completed 500 Internal Server Error in 1013ms (ActiveRecord: 10.1ms | Allocations: 231407)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x0000557de72dfc20>:0x00007f97bc326b48>
+Did you mean?  @post
+               @posts):
+     5: 
+     6:     
+     7:     <article class="media">
+     8:       <% if post.user.avatar.attached? %>
+     9:            <figure class="media-left">
+    10:         <p class="image is-48x48">
+    11:               <%= image_tag comment.user.avatar,size: '100' %>
+  
+app/views/comments/_comment.html.erb:8
+app/views/posts/_post.html.erb:60
+app/views/posts/index.html.erb:6
+Started GET "/" for ::1 at 2020-04-24 23:08:51 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 35.0ms | Allocations: 880)
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = $1 AND "active_storage_attachments"."name" = $2 AND "active_storage_attachments"."record_id" = $3[0m  [["record_type", "Post"], ["name", "image"], ["record_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."status" = $2) ORDER BY created_at DESC[0m  [["user_id", 3], ["status", "accepted"]]
+  ↳ app/models/user.rb:31:in `user_friends_post'
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:38
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:47
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/views/posts/_post.html.erb:60
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/comments/_comment.html.erb:8
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/comments/_comment.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 8.3ms | Allocations: 3404)
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/comments/_form.html.erb:5
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/comments/_form.html.erb:6
+  Rendered comments/_form.html.erb (Duration: 11.7ms | Allocations: 3508)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 56.8ms | Allocations: 17113)
+  Rendered posts/index.html.erb within layouts/application (Duration: 122.6ms | Allocations: 24067)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_nav.html.erb (Duration: 2.8ms | Allocations: 957)
+Completed 200 OK in 188ms (Views: 169.5ms | ActiveRecord: 8.8ms | Allocations: 35189)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9/foto_no_exif%20(1).jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22foto_no_exif+%25281%2529.jpg%22%3B+filename%2A%3DUTF-8%27%27foto_no_exif%2520%25281%2529.jpg" for ::1 at 2020-04-24 23:08:52 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"foto_no_exif %281%29.jpg\"; filename*=UTF-8''foto_no_exif%20%281%29.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhZM0pwWldKdmFucGxjakE0YmpWcWJuWnhhemh4TVRoblozZDVNd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1admRHOWZibTlmWlhocFppQWxNamd4SlRJNUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWm05MGIxOXViMTlsZUdsbUpUSXdKVEk0TVNVeU9TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAyMC0wNC0yNFQyMjoxMjozOC45NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--e22ef971df0a4184ec2e155da76b02da9cbd33a9", "filename"=>"foto_no_exif (1)"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 367)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893/dad%20(1).png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22dad+%25281%2529.png%22%3B+filename%2A%3DUTF-8%27%27dad%2520%25281%2529.png" for ::1 at 2020-04-24 23:08:52 +0100
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"dad %281%29.png\"; filename*=UTF-8''dad%20%281%29.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhPRGxvWm1VNVpubGlZbVkzYURob2VHdGhPWGRqTVdnM1lubHBkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SaFpDQWxNamd4SlRJNUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWkdGa0pUSXdKVEk0TVNVeU9TNXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA0LTI0VDIyOjEzOjA4LjY0N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e5799955ee638324cc1dc49c8d3f1bbf90347893", "filename"=>"dad (1)"}
+Completed 304 Not Modified in 19ms (ActiveRecord: 0.0ms | Allocations: 368)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tinymce/plugins/uploadimage/plugin.js"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.2.1) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.2.1) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
