@@ -46,12 +46,29 @@ $ bundle install
 $ rails db:migrate
 ```
 
+
+- Next,create & migrate the database:
+```
+$ rails db:create
+
+$ rails db:migrate
+```
+
+- Run the app in a local server:
+
+```
+$ rails server
+```
+- Finally, run the test suite to verify that everything is working correctly:
+
+```
+$ rspec
+```
 > You can then drop into rails console to explore the models
 
 ```sh
 $ cd rails c
 ```
-
 ## Contributors
 
 * [Adama Chubiyojo Desmond](https://github.com/kobiyoyo)
