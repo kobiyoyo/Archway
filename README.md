@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h1 align="center">Mira</h1>
+  <h1 align="center">Archway</h1>
 
   <p align="center">
     A Ruby on Rails application
