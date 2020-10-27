@@ -19,7 +19,7 @@
 
 ## Description
 The Archway project is an implementation of Facebook using Ruby on Rails. The technical goals of the project are to emulate some functionalities that Facebook has implemented, such as allowing the users to have friends in a symmetrical irreflexive way, accept & send friend requests, submit posts and see the posts of their friends and comment on the posts of their friends.
-
+ 
 
 
 ## Built With
